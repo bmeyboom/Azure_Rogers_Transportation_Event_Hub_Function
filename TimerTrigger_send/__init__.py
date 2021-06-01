@@ -25,7 +25,7 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
     # loop = asyncio.get_event_loop()
     loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop) 
+    asyncio.set_event_loop(loop)
     loop.run_until_complete(run())
 
 
@@ -34,7 +34,7 @@ async def run():
     # Specify a connection string to your event hubs namespace and
     # the event hub name.
     producer = EventHubProducerClient.from_connection_string(conn_str=eventhub_connection_str, eventhub_name=eventhub_name)
-    producer.send()
+    # producer.send()
     async with producer:
         # Create a batch. 
         # Connect to Blue City API
@@ -43,12 +43,12 @@ async def run():
 
         # Add events to the batch
         # t_end = time.time() + 60 * 5 # run for 5 minutes (until next function trigger)
-        t_end = time.time() + 1 * 60 # run for 1 minutes (until next function trigger) -> need to change in function.json cron expression
+        t_end = time.time() + 30 # run for 30 seconds (until next function trigger) -> need to change in function.json cron expression
 
         can_add = True # 
         while time.time() < t_end and can_add:
             try:
-                event_data_batch.add(EventData(query.get())) # query the BCTWSConnection
+                event_data_batch.add(EventData(body=query.get())) # query the BCTWSConnection
             except ValueError:
                 can_add = False
         
