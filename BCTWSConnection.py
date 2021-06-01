@@ -68,9 +68,12 @@ if __name__ == "__main__":
         f_ = c_.get()
         print(c_.get())
         lenght += utf8len(f_)
+        print(f_.split(','))
         print(f_)
         count += 1
+        time.sleep(1)
+    
+    c_.terminate()
 
     ft = time.time()
-
     print(lenght/(ft-st))

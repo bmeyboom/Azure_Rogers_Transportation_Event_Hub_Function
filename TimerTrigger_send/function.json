@@ -5,7 +5,14 @@
       "name": "mytimer",
       "type": "timerTrigger",
       "direction": "in",
-      "schedule": "0 * * * * *"
+      "schedule": "* * * * * *"
+    },
+    {
+      "type": "eventHub",
+      "direction": "out",
+      "name": "outputEventHubMessage",
+      "connection": "transportcloudingest_RootManageSharedAccessKey_EVENTHUB",
+      "eventHubName": "outeventhub"
     }
   ]
 }

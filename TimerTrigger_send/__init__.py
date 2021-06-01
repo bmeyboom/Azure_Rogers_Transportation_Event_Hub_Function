@@ -26,7 +26,7 @@ def main(mytimer: func.TimerRequest, outputEventHubMessage: func.Out[str]) -> No
     logging.info(str('raw frame: ' + frame))
     # push the query to Event Hub
     frame.replace('-', '/')
-    outputEventHubMessage.set("[" + frame + "]")
+    outputEventHubMessage.set(str("[" + str(EventData(frame)) + "]"))
     
     utc_timestamp = datetime.datetime.utcnow().replace(
         tzinfo=datetime.timezone.utc).isoformat()
