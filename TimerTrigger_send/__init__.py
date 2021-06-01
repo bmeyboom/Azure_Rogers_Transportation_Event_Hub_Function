@@ -24,7 +24,9 @@ def main(mytimer: func.TimerRequest, outputEventHubMessage: func.Out[str]) -> No
     # get a value from the API
     frame = BLUE_CITY_CONNECTION.get()
     logging.info(str('raw frame: ' + frame))
-    # push the query to Event Hub
+    
+    # push the frame to Event Hub
+    # replace '-' so that can be parse correctly
     frame.replace('-', '/')
     outputEventHubMessage.set(str("[" + str(EventData(frame)) + "]"))
     
