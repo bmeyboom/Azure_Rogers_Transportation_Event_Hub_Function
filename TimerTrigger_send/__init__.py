@@ -37,3 +37,5 @@ def main(mytimer: func.TimerRequest, outputEventHubMessage: func.Out[str]) -> No
         logging.info('The timer is past due!')
 
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
+
+    logging.info(str('raw frame: ' + frame))
