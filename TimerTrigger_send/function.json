@@ -11,7 +11,7 @@
       "type": "eventHub",
       "direction": "out",
       "name": "outputEventHubMessage",
-      "connection": "transportcloudingest_RootManageSharedAccessKey_EVENTHUB",
+      "connection": "EventHubConnection",
       "eventHubName": "outeventhub"
     }
   ]
